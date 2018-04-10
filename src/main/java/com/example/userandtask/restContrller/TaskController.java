@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +45,7 @@ public class TaskController {
     }
 
     @GetMapping("/byStartDate/{date}")
-    public ResponseEntity getTaskByTime(@PathVariable(name = "date") Date date) {
+    public ResponseEntity getTaskByTime(@PathParam(value = "date") Date date) {
         List<Task> startDate = taskRepository.findAllByStartDate(date);
         if (startDate == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task with " + date + " id no found");
