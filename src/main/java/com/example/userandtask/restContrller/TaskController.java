@@ -35,7 +35,7 @@ public class TaskController {
         return ResponseEntity.ok(byUserId);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity getTaskById(@PathVariable(name = "id") int id) {
         Task one = taskRepository.findOne(id);
         if (one == null) {
